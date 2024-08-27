@@ -57,6 +57,9 @@ print(multi_fruit)
 #   With the numbers list, what would happen if the list got much larger?
 #     We used a for loop, and don't have to write anymore code if the list gets larger. So fun
 
+# Day 3
+# - Recap Day 2
+#
 # Formal Definition Time
 #
 #   A loop is a sequence of instructions that is continually repeated until a certain condition is reached.
