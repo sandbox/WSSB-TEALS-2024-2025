@@ -31,6 +31,9 @@ print(multi_fruit)
 #
 # Does that feel like a lot of work to add 100 items? Do you think there is a better way?
 #
+# Day 2
+# - Recap Day 1
+#
 # Now let's try the following
 list_of_numbers = [3, 5, 10, 23]
 for num in list_of_numbers:
