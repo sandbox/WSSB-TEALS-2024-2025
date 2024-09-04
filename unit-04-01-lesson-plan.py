@@ -94,7 +94,7 @@ for num in list_of_numbers: # condition
 #
 # Make a list of animals
 # Find the animal in your list that starts with your favorite letter
-# PRint the animal you found
+# Print the animal you found
 
 animals = ['cat', 'dog', 'tiger', 'elephant']
 for animal in animals:
