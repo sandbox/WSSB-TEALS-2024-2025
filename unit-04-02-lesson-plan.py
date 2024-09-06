@@ -57,7 +57,11 @@ for i in range(len(numbers)):
 # The code will contain two common errors.
 #
 # This looks very tricky to explain
-# The common errors: off by one at the end of the list, off by one at the beginning of the list
+#
+# In the sample “Function Contains Two Errors” code, we expect the return value True, but we get an IndexError instead.
+# Suggest printing the values of the indices immediately before the line where the error appears (right after while statement).
+# First error: the index of the last character is 3, so the initial value for j should be different: j = len(word2)-1.
+# Second error: we need to include the character at index 0, so we need to change the while condition: while j >= 0:
 def is_reverse(word1, word2):
   if len(word1) != len(word2):
     return False
