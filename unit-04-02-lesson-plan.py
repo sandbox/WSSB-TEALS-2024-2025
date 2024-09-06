@@ -76,4 +76,7 @@ return True
 print(is_reverse('pots', 'stop'))
 
 
+# Lab fruit_pluralizer - Part 1
+#
+
 
