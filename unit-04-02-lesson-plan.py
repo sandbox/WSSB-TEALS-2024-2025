@@ -125,3 +125,11 @@ def my_reverse(string_to_reverse):
 reversed_string = my_reverse("apples")
 print(reversed_string)
 # examples go here
+
+
+# Bonus Lab
+'''
+Create a function reverse_strings_in_list.
+This function will input a list of strings you want to reverse.
+The function will reverse the strings in the list by calling the my_reverse function in a loop.
+'''
