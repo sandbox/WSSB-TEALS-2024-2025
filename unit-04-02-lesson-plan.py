@@ -37,5 +37,15 @@ for i in range(0, len(a_list)):
 # A common way to do that is to combine the functions range() and len():
 #
 # Example
+numbers = [1,2,3,4]
 for i in range(len(numbers)):
     numbers[i] = numbers[i] * 2
+
+# What did this code do to numbers?
+
+# Debugging
+#
+# It's tricky to get the beginning and end of the traversal right. 
+# On the following page is a function that is supposed to compare two words and return True if one of the words is the reverse of the other.
+# The code will contain two common errors.
+
