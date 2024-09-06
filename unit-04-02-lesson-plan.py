@@ -76,7 +76,25 @@ return True
 print(is_reverse('pots', 'stop'))
 
 
-# Lab fruit_pluralizer - Part 1
+# Lab fruit_pluralizer
 #
 
+# Lab Reverse String 
+#
+'''
+Create a function my_reverse, which will return a reversed string.
 
+Create the function contract for my_reverse.
+Provide a few examples to confirm that my_reverse works:
+An empty string
+A string of even length
+A string of odd length greater than 1
+A string of length 1
+'''
+# contract goes here
+def my_reverse(string_to_reverse):
+    # your code goes here
+
+reversed = my_reverse("apples")
+print(reversed)
+# examples go here
