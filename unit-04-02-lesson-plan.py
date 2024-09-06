@@ -29,6 +29,9 @@ print(list(range(0, len(a_list)))
 
 # What does the `len` function do?
 # How might you use `len`?
+# How might the values in the second print be helpful?
+# Answer: They are a list of the indices!
+#   You can use these values to access the index of a list
 
 # Part 3: Lets try using the range() and len() functions to make a for loop that prints the elements of a_list, one at a time.
 # Answer:
