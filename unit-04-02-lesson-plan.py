@@ -30,3 +30,12 @@ print(list(range(0, len(a_list)))
 # Answer:
 for i in range(0, len(a_list)):
   print(a_list[i])  
+
+
+# Most common way to traverse the elements of a list is with a for loop. 
+# To write or update the elements, use indices. 
+# A common way to do that is to combine the functions range() and len():
+#
+# Example
+for i in range(len(numbers)):
+    numbers[i] = numbers[i] * 2
