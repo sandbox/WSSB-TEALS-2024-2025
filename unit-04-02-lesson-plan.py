@@ -133,3 +133,12 @@ Create a function reverse_strings_in_list.
 This function will input a list of strings you want to reverse.
 The function will reverse the strings in the list by calling the my_reverse function in a loop.
 '''
+
+# Conclusion/Recap/Discussion
+#
+# In your notebook, write an example of how you could use a for loop in a computer progam.
+# What are some issues you had in today's lab?
+#   Debugging/Dealing with indexing in a for loop
+#   For loop scope of variable
+#
+# Lists are mutable - which means the insides can change
