@@ -31,9 +31,6 @@ print(multi_fruit)
 #
 # Does that feel like a lot of work to add 100 items? Do you think there is a better way?
 #
-# Day 2
-# - Recap Day 1
-#
 # Now let's try the following
 list_of_numbers = [3, 5, 10, 23]
 for num in list_of_numbers:
@@ -44,6 +41,7 @@ for num in list_of_numbers:
 # Can you think about how to rewrite the code with the fruits using what you learned from the list_of_numbers example.
 
 # Let's rewrite the code with the fruits
+# Answer:
 single_fruit = ['apple', 'banana', 'watermelon', 'grape']
 multi_fruit = []
 for fruit in single_fruit:
@@ -57,8 +55,8 @@ print(multi_fruit)
 #   With the numbers list, what would happen if the list got much larger?
 #     We used a for loop, and don't have to write anymore code if the list gets larger. So fun
 
-# Day 3
-# - Recap Day 2
+# Day 2
+# - Recap Day 1
 #
 # Formal Definition Time
 #
