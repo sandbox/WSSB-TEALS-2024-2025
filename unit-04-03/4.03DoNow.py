@@ -1,12 +1,14 @@
-# Run the following code:
+# Predict what will happen when you run the following code:
 
 def print_6_stars():
     my_string = ''
     for i in range(0, 6):
         my_string += ' *'
-    print(my_string)        
+    print(my_string)   
 
-# In your notebook, write down what the output of the 
+print_6_stars() 
+
+# Run the code, and write down what the output of the 
 # function print_6_stars is. 
 
 # Write a function print_star_square that calls 
