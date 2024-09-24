@@ -1,14 +1,14 @@
 ## Part 1
 
 # Teaching Guide
-# 1. Students should write the function contract
-# 1. Students should try to plan what they will do to
-# 1. Students should make a for loop going over the indexes of the word_list
-# 1. Students can edit an item in the list in the for loop (adding the s)
-# 1. Students can use a variable inside the for loop to make it easier to use the current word
-# 1. Students can use negative indexing to access the last letter of the word
-# 1. Students can use an if statement to check if the last letter of a word is y
-# 1. Students can use slicing to copy a word, up to and excluding the last letter
+# 1 Students should write the function contract
+# 2 Students should try to plan what they will do to
+# 3 Students should make a for loop going over the indexes of the word_list
+# 4 Students can edit an item in the list in the for loop (adding the s)
+# 5 Students can use a variable inside the for loop to make it easier to use the current word
+# 6 Students can use negative indexing to access the last letter of the word
+# 7 Students can use an if statement to check if the last letter of a word is y
+# 8 Students can use slicing to copy a word, up to and excluding the last letter
 
 # Name: pluralize_words
 # Purpose: Make a singular word plural
@@ -28,6 +28,16 @@ pluralize_words(word_list)
 print("No longer singular words: " + str(word_list))
 
 ## Part 2
+
+# Teaching Guide
+# 1 Students should write the function contract
+# 2 Students should try to plan what they will do to
+# 3 Students should create a result variable as an empty string that they are going to build up
+# 4 Students should make a for loop going over the indexes of the string to reverse
+# 5 Students can use negative indexing to grab the from the end of the string_to_reverse
+# 6 Students can use math to grab the appropriate negative index in the string_to_reverse
+# 7 Students can add to the reverse string
+# 8 Students return the resulting reversed_string
 
 # Name: my_reverse
 # Purpose: Reverses all the letters in a word
