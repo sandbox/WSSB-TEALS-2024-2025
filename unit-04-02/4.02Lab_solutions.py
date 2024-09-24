@@ -27,6 +27,27 @@ print("Singular words: " + str(word_list))
 pluralize_words(word_list)
 print("No longer singular words: " + str(word_list))
 
+# Example bonus: Asking for singular fruits by input, adding them to the list and then pluralizing
+# Example bonus: Pluralizing ch words to 'es'
+def pluralize_words(word_list):
+  for i in range(0, len(word_list)):
+    word = word_list[i]
+    if word[-1] == 'y':
+      word_list[i] = word[0:-1] + 'ies'
+    elif word[-2:] == 'ch':
+      word_list[i] = word + 'es'
+    else:
+      word_list[i] = word + 's'
+
+number_of_fruits = int(input('How many fruits would you like to add?'))
+fruits = []
+for i in range(number_of_fruits):
+  fruits.append(input("Add fruit #{}: ".format(i+1)))
+
+print("Singular fruits: " + str(fruits))
+pluralize_words(fruits)
+print("Plural fruits: " + str(fruits))
+
 ## Part 2
 
 # Teaching Guide
