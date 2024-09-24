@@ -1,5 +1,14 @@
 ## Part 1
 
+# Teaching Guide
+# 1. Students should write the function contract
+# 1. Students should try to plan what they will do to
+# 1. Students should make a for loop going over the indexes of the word_list
+# 1. Students can edit an item in the list one in the for loop
+# 1. Students can use negative indexing to access the last letter of the word
+# 1. Students can use an if statement to check if the last
+# 1. Students can use slicing to copy a word, up to and excluding the last letter
+
 # Name: pluralize_words
 # Purpose: Make a singular word plural
 # Arguments: List of singular words (strings)
@@ -24,7 +33,7 @@ print("No longer singular words: " + str(word_list))
 # Arguments: String to be reversed (str)
 # Returns: The reversed string (str)
 def my_reverse(string_to_reverse):
-  reversed_string = ''  
+  reversed_string = ''
   for i in range(0, len(string_to_reverse)):
     reversed_string += string_to_reverse[-1 - i]
   return reversed_string
