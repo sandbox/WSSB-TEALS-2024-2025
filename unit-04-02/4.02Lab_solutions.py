@@ -48,6 +48,17 @@ print("Singular fruits: " + str(fruits))
 pluralize_words(fruits)
 print("Plural fruits: " + str(fruits))
 
+
+# Example bonus alternate:
+# fruits = []
+# adding_fruit = True
+# while adding_fruit:
+#   fruit = input('What fruit would you like to add? ')
+#   if fruit.lower() == 'done':
+#     adding_fruit = False
+#   else:
+#     fruits.append(fruit)
+      
 ## Part 2
 
 # Teaching Guide
