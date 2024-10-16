@@ -39,19 +39,19 @@ def letter_to_number(letter):
     return None
 
 # function contract goes here
-def cipher(letter):
+# def cipher(letter):
     # function body goes here
 
 # Examples
-print(cipher('a'))
-print(cipher(cipher('a')))
-print(cipher('x'))
-print(cipher(cipher('x')))
+# print(cipher('a'))
+# print(cipher(cipher('a')))
+# print(cipher('x'))
+# print(cipher(cipher('x')))
 # add more examples here
 
 
 # function contract goes here
-def cipher_text(text):
+# def cipher_text(text):
     # function body goes here
 
 text = [
