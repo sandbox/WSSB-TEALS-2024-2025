@@ -67,3 +67,10 @@ text = [
 # Use the cipher_text function to convert and print the full list of
 # text. Hint: you'll need a for loop
 # code goes here
+
+### Bonus
+# Rewrite cipher() to take an additional, integer, argument, which 
+# specifies how many spaces to the right the function rotates the 
+# alphabet. Write a new function, decipher(), which has a similar 
+# function contract but rotates left rather than right. Your code is 
+# correct if decipher(cipher('a')) returns 'a'.
