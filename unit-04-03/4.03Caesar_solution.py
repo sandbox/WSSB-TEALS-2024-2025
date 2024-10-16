@@ -40,7 +40,10 @@ print(cipher(cipher('x')))
 # Parameters: The text to convert, as a string.
 # Returns: Converted text, as a string.
 def cipher_text(text):
-    return ''.join([cipher(c) for c in text])
+    ret = ''
+    for c in text:
+      ret += cipher(c)
+    return ret
 
 text = [
     'Mary had a little lamb',
