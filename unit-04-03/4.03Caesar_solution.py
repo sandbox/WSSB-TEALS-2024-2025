@@ -55,3 +55,11 @@ text = [
 for t in text:
   print(cipher_text(t))
   print(cipher_text(cipher_text(t)))
+
+# Bonus
+
+# Rewrite cipher() to take an additional, integer, argument, which 
+# specifies how many spaces to the right the function rotates the 
+# alphabet. Write a new function, decipher(), which has a similar 
+# function contract but rotates left rather than right. Your code is 
+# correct if decipher(cipher('a')) returns 'a'.
