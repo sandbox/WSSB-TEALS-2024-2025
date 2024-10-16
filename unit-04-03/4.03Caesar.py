@@ -50,12 +50,9 @@ print(cipher(cipher('x')))
 # add more examples here
 
 
-# Name: cipher_text
-# Purpose: Converts a whole string of text through the rot13 Caesar Cipher
-# Parameters: The text to convert, as a string.
-# Returns: Converted text, as a string.
+# function contract goes here
 def cipher_text(text):
-    return ''.join([cipher(c) for c in text])
+    # function body goes here
 
 text = [
     'Mary had a little lamb',
