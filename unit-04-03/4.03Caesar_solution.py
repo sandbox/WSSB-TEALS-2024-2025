@@ -61,8 +61,40 @@ for t in text:
 
 # Bonus
 
-# Rewrite cipher() to take an additional, integer, argument, which 
-# specifies how many spaces to the right the function rotates the 
-# alphabet. Write a new function, decipher(), which has a similar 
-# function contract but rotates left rather than right. Your code is 
+# Rewrite cipher() to take an additional, integer, argument, which
+# specifies how many spaces to the right the function rotates the
+# alphabet. Write a new function, decipher(), which has a similar
+# function contract but rotates left rather than right. Your code is
 # correct if decipher(cipher('a')) returns 'a'.
+
+def cipher_rot(letter, rot):
+    letter_number = letter_to_number(letter)
+    if letter_number is None:
+      return letter
+    cipher_number = letter_number + rot
+    cipher_number = cipher_number % 26
+    return 'abcdefghijklmnopqrstuvwxyz'[cipher_number]
+
+def decipher_rot(letter, rot):
+    letter_number = letter_to_number(letter)
+    if letter_number is None:
+      return letter
+    cipher_number = letter_number - rot
+    cipher_number = cipher_number % 26
+    return 'abcdefghijklmnopqrstuvwxyz'[cipher_number]
+
+def cipher_text_rot(text, rot):
+    ret = ''
+    for c in text:
+      ret += cipher_rot(c, rot)
+    return ret
+
+def decipher_text_rot(text, rot):
+    ret = ''
+    for c in text:
+      ret += decipher_rot(c, rot)
+    return ret
+
+for t in text:
+  print(cipher_text_rot(t, 3))
+  print(decipher_text_rot(cipher_text_rot(t, 3), 3))
