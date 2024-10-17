@@ -29,6 +29,10 @@ def cipher(letter):
     cipher_number = cipher_number % 26
     return 'abcdefghijklmnopqrstuvwxyz'[cipher_number]
 
+# None is a keyword that represents nothing and indicates to the
+# programmer that we have to handle it in some way. And we get to
+# decide how we want to handle it.
+
 # Examples
 print(cipher('a'))
 print(cipher(cipher('a'))) # should print a since running the cipher twice brings you back to where you started
