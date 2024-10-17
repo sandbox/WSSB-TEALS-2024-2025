@@ -43,7 +43,7 @@ def get_player_move(board):
         row_number = int(input('Input the row number where you would like to make your move (1-3): '))
         col_number = int(input('Input the column number where you would like to make your move (1-3): '))
         if not valid_move(board, row_number, col_number):
-            print('Please input a valid board position!')
+            print('Please input a valid move!')
         else:
             break
     return row_column_to_board_index(row_number, col_number)
