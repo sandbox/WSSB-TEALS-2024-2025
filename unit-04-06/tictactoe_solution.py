@@ -73,13 +73,11 @@ def check_for_winner(board):
 
     if winner is not None:
         return winner
-
-    # empty spots and no winner yet
-    if '' in board and winner is None:
+    elif '' in board:
+        # empty spots and no winner yet
         return 'keep playing'
-
-    # all full but no winner is a tie
-    if '' not in board and winner is None:
+    else:
+        # all full but no winner is a tie
         return 'tie'
 
 # Now that we've defined our functions, let's play a game of tic-tac-toe!
