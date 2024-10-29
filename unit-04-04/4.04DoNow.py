@@ -1,6 +1,6 @@
 # Type and run the following code
 
-# my_building is a representation of the apartments on 
+# my_building is a representation of the apartments on
 # each floor of my 3 story building
 
 my_building = [
@@ -16,7 +16,7 @@ print("first floor, 3rd apartment: " + str(my_building[0][2]))
 # first floor: ['apt1a', 'apt1b', 'apt1c']
 # first floor, 3rd apartment: apt1c
 
-# How you would access the 2nd apartment of the 3rd floor (apt3b)?
+# How would you access the 2nd apartment of the 3rd floor (apt3b)?
 
 
 ## Part 2

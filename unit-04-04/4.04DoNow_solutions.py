@@ -1,6 +1,6 @@
 # Type and run the following code
 
-# my_building is a representation of the apartments on 
+# my_building is a representation of the apartments on
 # each floor of my 3 story building
 
 my_building = [
@@ -42,7 +42,7 @@ for floor in my_building:
 
 print(all_apts)
 
-# Change all "d" apartments to say "suite"
+# Change all "c" apartments to say "suite"
 
 for floor in my_building:
   floor[-1] = 'suite'
@@ -56,7 +56,7 @@ for floor in my_building:
     if apartment[-1] != 'a':
       print(apartment)
 
-print(my_building)      
+print(my_building)
 
 # Add "(newly renovated!)" to all apartment names
 
