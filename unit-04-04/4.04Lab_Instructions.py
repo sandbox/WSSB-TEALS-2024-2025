@@ -56,17 +56,17 @@
 # In this part of the lab you will go through your shopping list program 
 # and perform a few different calculations.
 
-# Create a function, all_in_one, that will put all the shopping 
+# 1. Create a function, all_in_one, that will put all the shopping 
 # lists into a single combined list using a for loop.
 
-# Create a function, count_q_tips, which will go through all items of 
+# 2. Create a function, count_q_tips, which will go through all items of 
 # the list and keep a count of how many times 'q-tips' occurs.
 
-# In order to make the shopping lists more calcium rich, write a function, 
+# 3. In order to make the shopping lists more calcium rich, write a function, 
 # drink_more_milk, that adds 'milk' to each of the lists (unless it's 
 # already there).
 
-# You can't have milk without cookies. Write a function 
+# 4. You can't have milk without cookies. Write a function 
 # if_you_give_a_moose_a_cookie, that will go through every element of 
 # shopping_cart and update 'milk' to be 'milk and cookies'.
 
