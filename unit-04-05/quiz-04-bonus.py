@@ -11,5 +11,5 @@ secret_words = [
    ['very', 'secret', 'word'],
    ['i', 'can', 'find']
    ]
-find_secret(secret_words, ‘secret’) #prints 1, 1
-find_secret(secret_words, ‘missing’) #prints -1, -1
+find_secret(secret_words, 'secret') #prints 1, 1
+find_secret(secret_words, 'missing') #prints -1, -1
