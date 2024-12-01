@@ -74,26 +74,41 @@ for index in range(0, len(fruits_1)):
 # item, etc.
 
 ##
-## Function arguments
-##
-### Relationship between arguments and parameters
-
-##
 ## Using variables to build strings, patterns
 ##
-my_numbers = ''
-for number in range(0, 10):
-  my_numbers += number
-print(my_numbers) # prints `0 1 2 3 4 5 6 7 8 9`
+my_string = ''
+for index in range(0, 6):
+  my_string += '* '
+print(my_string)
 
+##
+## Function arguments
+##
+def print_stars(number):
+  my_string = ''
+  for index in range(0, number):
+    my_string += '* '
+  print(my_string)
+
+print_stars(10)
+
+# notes: emphasize relationship between arguments and parameters
+# Defining function vs. Calling function
+
+##
 ## Nested for loops using range
+##
+
 for row in range(0, 4):
     string = ''
     for column in range(0, 8):
       string += '* '
     print(string)
 
+##
 ## Modulo operator to determine odd/even
+##
+
 for row in range(0, 4):
     string = ''
     for column in range(0, 8):
@@ -105,7 +120,3 @@ for row in range(0, 4):
 
 ## Nested lists and nested for loops
 ### Finding items with two indexes in a list of lists
-
-
-## Example 4:
-## @TODO function that searches a list for a string and prints the index
