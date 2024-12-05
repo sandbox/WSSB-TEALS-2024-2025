@@ -118,5 +118,60 @@ for row in range(0, 4):
             string += '= '
     print(string)
 
-## Nested lists and nested for loops
-### Finding items with two indexes in a list of lists
+
+##
+## Nested for loops and nested lists
+##
+
+school = [
+  ['Jane', 'Chris', 'Bob'],
+  ['Emily', 'Bob'],
+  ['Chris', 'Julie', 'Bob', 'Mariah', 'Riley']
+]
+
+# Intermediary step
+
+# def count_bobs():
+#   counter = 0
+#   for classroom in school:
+#     for student in classroom:
+#       if student == 'Bob':
+#         counter += 1
+#   return counter
+
+# print(count_bobs())
+
+def count_names(name):
+  counter = 0
+  for classroom in school:
+    for student in classroom:
+      if student == name:
+        counter += 1
+  return counter
+
+print(count_names('Bob'))
+
+# notes: emphasize difference between using "for item in list" vs. range
+# Relationship between argument and parameter
+# Difference between print and return
+# Can optionally use an intermediate step of finding a hardcoded name
+
+##
+## Updating nested list items with nested for loops and range
+##
+
+aquarium = [
+  ['beta', 'beta', 'clownfish'],
+  ['shark', 'jellyfish', 'beta'],
+  ['goldfish', 'goldfish'],
+  ['shark', 'stingray', 'beta', 'shark']
+]
+
+def feed_the_fish(fish):
+  for tank in aquarium:
+    for index in range(0, len(tank)):
+      if tank[index] == fish:
+        tank[index] = 'X'
+
+feed_the_fish('beta')
+print(aquarium)
