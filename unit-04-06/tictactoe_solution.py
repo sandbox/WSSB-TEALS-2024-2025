@@ -11,32 +11,42 @@ COMPUTER = 'computer'
 # Don't rename these functions! You can absolutely write extra functions aside from these
 # ones if you want, but don't change the names of the five functions please.
 
+# Plan: What is make board supposed to output?
 def make_board():
     board = []
-    for i in range(0, 9):
-        board.append('')
+    for i in range(0, 3):
+        row = []
+        for j in range(0, 3):
+            row.append('')
+        board.append(row)
     return board
 
+assert make_board() == [['', '', ''], ['', '', ''], ['', '', '']]
+
 def print_board(board):
-    board_str = ''
-    for board_index in range(0, len(board)):
-        if board[board_index] == '':
-            board_str += ' '
-        else:
-            board_str += board[board_index]
+    for row in board:
+        row_str = '| '
+        for cell in row:
+            if cell == '':
+                row_str += ' '
+            else:
+                row_str += cell
+            row_str += ' | '
+        print(row_str)
 
-        if board_index % 3 == 2:
-            board_str += '\n'
-        else:
-            board_str += ' | '
-    print(board_str)
+# We're expecting the following code to output
+print('Printing an empty board')
+print_board(make_board())
 
-# we should maybe provide this function to the students
-def row_column_to_board_index(row, col):
-    return (row - 1) * 3 + col - 1
+print('Printing an example board')
+print_board([
+  ['X', '', 'O'],
+  ['O', 'X', 'X'],
+  ['X', '', 'O']
+])
 
 def valid_move(board, row_number, col_number):
-    return row_number is not None and 1 <= row_number <= 3 and col_number is not None and 1 <= col_number <= 3 and board[row_column_to_board_index(row_number, col_number)] == ''
+    return row_number is not None and 1 <= row_number <= 3 and col_number is not None and 1 <= col_number <= 3 and board[row_number - 1][col_number - 1] == ''
 
 def get_player_move(board):
     while True:
@@ -46,39 +56,116 @@ def get_player_move(board):
             print('Please input a valid move!')
         else:
             break
-    return row_column_to_board_index(row_number, col_number)
+    return row_number - 1, col_number - 1
+print('Try running get_player_move with the input of row number 3 and col number 2')
+assert get_player_move(make_board()) == (2, 1)
 
-# simple computer algorithm to return a random empty location
-def get_computer_move(board, computer_team):
-    return random.choice([i for i in range(0, len(board)) if board[i] == ''])
+# What is the expectation for get_computer_move?
+# returning the first spot open for the computer
+def get_computer_move(board):
+    for row in range(0, len(board)):
+        for col in range(0, len(board[row])):
+            if board[row][col] == '':
+                return row, col
 
-def check_for_winner(board):
-    win_conditions = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6],
+assert get_computer_move([
+  ['X', '', 'O'],
+  ['O', 'X', 'X'],
+  ['X', '', 'O']
+]) == (0, 1)
+assert get_computer_move([
+  ['X', 'O', 'X'],
+  ['O', 'X', 'X'],
+  ['O', '', '']
+]) == (2, 1)
+
+def get_win_conditions():
+    return [
+        [[0, 0], [1, 1], [2, 2]],
+        [[0, 0], [0, 1], [0, 2]],
+        [[1, 0], [1, 1], [1, 2]],
+        [[2, 0], [2, 1], [2, 2]],
+        [[0, 0], [1, 0], [2, 0]],
+        [[0, 1], [1, 1], [2, 1]],
+        [[0, 2], [1, 2], [2, 2]],
+        [[0, 2], [1, 1], [2, 0]],
     ]
+assert len(get_win_conditions()) == 8
 
-    winner = None
-    for win_condition in win_conditions:
-        winner_string = ''.join([board[index] for index in win_condition])
-        if winner_string == 'XXX' or winner_string == 'OOO':
-            winner = winner_string[0]
-            break
+def did_turn_win(whose_turn, board, win_condition):
+    for (row, col) in win_condition:
+        if board[row][col] != whose_turn:
+            return False
+    return True
 
+assert did_turn_win('X', [['X', 'X', 'X'], ['O', '', 'O'], ['', 'O', '']], [[0, 0], [0, 1], [0, 2]])
+assert not did_turn_win('O', [['X', 'X', 'X'], ['O', '', 'O'], ['', 'O', '']], [[0, 0], [0, 1], [0, 2]])
+assert did_turn_win('O', [['O', 'O', 'O'], ['X', '', 'X'], ['', 'X', '']], [[0, 0], [0, 1], [0, 2]])
+
+def are_there_empty_spots(board):
+    for row in board:
+        for cell in row:
+            if cell == '':
+                return True
+    return False
+
+def get_game_status(board, winner):
     if winner is not None:
         return winner
-    elif '' in board:
-        # empty spots and no winner yet
+    elif are_there_empty_spots(board):
         return 'keep playing'
     else:
-        # all full but no winner is a tie
+        # all spots are filled but no winner is a tie
         return 'tie'
+assert get_game_status(make_board(), None) == 'keep playing'
+assert get_game_status(make_board(), 'X') == 'X'
+assert get_game_status(make_board(), 'O') == 'O'
+assert get_game_status([
+    ['X', 'O', 'X'],
+    ['X', 'O', 'O'],
+    ['O', 'X', 'X']
+], None) == 'tie'
+
+def check_for_winner(board):
+    win_conditions = get_win_conditions()
+    winner = None
+    for win_condition in win_conditions:
+        if did_turn_win('O', board, win_condition):
+            winner = 'O'
+        if did_turn_win('X', board, win_condition):
+            winner = 'X'
+    return get_game_status(board, winner)
+assert check_for_winner(make_board()) == 'keep playing'
+assert check_for_winner([
+    ['X', 'O', 'X'],
+    ['O', 'X', 'O'],
+    ['O', 'X', 'X']
+]) == 'X'
+assert check_for_winner([
+    ['X', 'O', 'X'],
+    ['O', 'O', 'O'],
+    ['O', 'X', 'X']
+]) == 'O'
+assert check_for_winner([
+    ['X', 'O', 'X'],
+    ['X', 'O', 'O'],
+    ['O', 'X', 'X']
+]) == 'tie'
+
+def is_game_over(win_status):
+    if win_status == 'keep playing':
+        return False
+    if win_status == 'tie':
+        return True
+    if win_status == 'X':
+        return True
+    if win_status == 'O':
+        return True
+
+assert not is_game_over('keep playing')
+assert is_game_over('tie')
+assert is_game_over('X')
+assert is_game_over('O')
 
 # Now that we've defined our functions, let's play a game of tic-tac-toe!
 
@@ -94,42 +181,44 @@ if __name__ == '__main__':
     else:
         computer_team = 'X'
 
-    # Decide who goes first.
-    whose_turn = random.choice([PLAYER, COMPUTER])
-    print('The {} will go first.'.format(whose_turn))
-
     # Get a fresh board.
     board = make_board()
+    print_board(board)
+
+    # Decide who goes first.
+    whose_turn = random.choice([PLAYER, COMPUTER])
+
+    print('The {} will go first.'.format(whose_turn))
 
     while True:
         # Figure out whose turn it is, and let them make a move.
         if whose_turn == PLAYER:
-            print_board(board)
-            index = get_player_move(board)
-            print("You moved to board position: ", index)
-            board[index] = player_team
+            row, col = get_player_move(board)
+            board[row][col] = player_team
 
         else:
-            index = get_computer_move(board, computer_team)
-            print("Computer moved to board position: ", index)
-            board[index] = computer_team
+            row, col = get_computer_move(board)
+            board[row][col] = computer_team
+            print('The computer moved')
+
+        print_board(board)
 
         # Check to see if someone won, and end the game if so.
         win_status = check_for_winner(board)
-        if win_status != 'keep playing':
+
+        if is_game_over(win_status):
             if win_status == 'tie':
                 print('-------------------')
                 print("It's a tie!")
-                print_board(board)
                 break
             else:
                 print('-------------------')
                 print('The {} wins!'.format(whose_turn))
-                print_board(board)
-                break
+            break
 
         # If we've made it this far, nobody's won yet, so let's get ready for the next turn.
         if whose_turn == PLAYER:
             whose_turn = COMPUTER
         else:
             whose_turn = PLAYER
+    print_board(board)
