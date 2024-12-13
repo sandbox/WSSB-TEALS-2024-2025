@@ -80,28 +80,11 @@ def get_computer_move(board):
 # print(get_computer_move(make_board()))
 # quit()    
 
-def get_win_conditions():
-    return [
-        # diagnol across left to right win condition
-        [
-            [0, 0],
-            [1, 1],
-            [2, 2]
-        ],
-        # top row win condition
-        [
-            [0, 0],
-            [0, 1],
-            [0, 2]
-        ],
-        # middle row win condition
-        [
-            [1, 0],
-            [1, 1],
-            [1, 2]
-        ],
-        # there are 5 more win conditions to add here:
-    ]
+win_conditions = [
+    [[0, 0], [1, 1], [2, 2]],
+    [[0, 0], [0, 1], [0, 2]],
+    [[1, 0], [1, 1], [1, 2]]
+]
 
 def check_for_winner(board):
     # test statement
