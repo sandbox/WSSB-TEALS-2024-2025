@@ -10,6 +10,7 @@ COMPUTER = 'computer'
 ## Input: 
 ## Output:
 def make_board():
+    pass
 
 ## Test statements
 # print(make_board())
@@ -20,6 +21,7 @@ def make_board():
 ## Input: 
 ## Output:
 def print_board(board):
+    pass
 
 ## Test statements - Blank board
 # print_board(make_board())
@@ -35,6 +37,7 @@ def print_board(board):
 ## Input: 
 ## Output: 
 def get_player_move(board):
+    pass
 
 ## Test statements
 # print(get_player_move(make_board()))
@@ -45,6 +48,7 @@ def get_player_move(board):
 ## Input:
 ## Output:
 def get_computer_move(board):
+    pass
 
 ## Test statements
 # print(get_computer_move(make_board()))
