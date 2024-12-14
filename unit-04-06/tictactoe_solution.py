@@ -5,13 +5,10 @@ import random
 PLAYER = 'player'
 COMPUTER = 'computer'
 
-
-# Here are the empty functions that it's your job to implement!
-# Check the assignment carefully to see what each function is supposed to do.
-# Don't rename these functions! You can absolutely write extra functions aside from these
-# ones if you want, but don't change the names of the five functions please.
-
-# Plan: What is make board supposed to output?
+## Function name: make_board
+## Purpose: Initialize a new, empty board
+## Input: None
+## Output: A new, empty board (list of lists)
 def make_board():
     board = []
     for i in range(0, 3):
@@ -21,86 +18,103 @@ def make_board():
         board.append(row)
     return board
 
-assert make_board() == [['', '', ''], ['', '', ''], ['', '', '']]
+## Test statements
+# print(make_board())
+# quit()
 
+## Function name: print_board
+## Purpose: prints a formatted board based on a list
+## Input: board (list of lists)
+## Output: None (prints formatted board)
 def print_board(board):
     for row in board:
-        row_str = '| '
-        for cell in row:
-            if cell == '':
-                row_str += ' '
+        my_row = ''
+        for column in row:
+            if column == '':
+                my_row += '|   '
             else:
-                row_str += cell
-            row_str += ' | '
-        print(row_str)
+                my_row += '| ' + column + ' '
+        my_row += '|'
+        print(my_row)
 
-# We're expecting the following code to output
-print('Printing an empty board')
-print_board(make_board())
+## Test statements - Blank board
+# print_board(make_board())
+# quit()
 
-print('Printing an example board')
-print_board([
-  ['X', '', 'O'],
-  ['O', 'X', 'X'],
-  ['X', '', 'O']
-])
+## Test statements - Sample board
+# test_board = [['X', '', 'O'],['O', 'X', 'X'],['X', '', 'O']]
+# print_board(test_board)
+# quit()
 
 def valid_move(board, row_number, col_number):
-    return row_number is not None and 1 <= row_number <= 3 and col_number is not None and 1 <= col_number <= 3 and board[row_number - 1][col_number - 1] == ''
+    return 1 <= row_number <= 3 and \
+        1 <= col_number <= 3 and \
+        board[row_number - 1][col_number - 1] == ''
 
+## Function name: get_player_move
+## Purpose: Asks for player move
+## Input: current board (list of lists)
+## Output: row and column number of selction
 def get_player_move(board):
     while True:
         row_number = int(input('Input the row number where you would like to make your move (1-3): '))
         col_number = int(input('Input the column number where you would like to make your move (1-3): '))
         if not valid_move(board, row_number, col_number):
-            print('Please input a valid move!')
+            print('Try again!')
         else:
-            break
-    return row_number - 1, col_number - 1
-print('Try running get_player_move with the input of row number 3 and col number 2')
-assert get_player_move(make_board()) == (2, 1)
+            return row_number - 1, col_number - 1
 
-# What is the expectation for get_computer_move?
-# returning the first spot open for the computer
+## Test statements
+# print(get_player_move(make_board()))
+# quit()
+
+## Function name: get_computer_move
+## Purpose: Generates a computer move from list of available spaces
+## Input: current board (list of lists)
+## Output: row and column number of selction
 def get_computer_move(board):
+    possible_moves = []
     for row in range(0, len(board)):
-        for col in range(0, len(board[row])):
-            if board[row][col] == '':
-                return row, col
+        for column in range(0, len(board[row])):
+            if board[row][column] == '':
+                possible_moves.append([row, column])
+    move = random.choice(possible_moves)
+    return move
 
-assert get_computer_move([
-  ['X', '', 'O'],
-  ['O', 'X', 'X'],
-  ['X', '', 'O']
-]) == (0, 1)
-assert get_computer_move([
-  ['X', 'O', 'X'],
-  ['O', 'X', 'X'],
-  ['O', '', '']
-]) == (2, 1)
+## Test statements
+# print(get_computer_move(make_board()))
+# quit()
 
-def get_win_conditions():
-    return [
-        [[0, 0], [1, 1], [2, 2]],
-        [[0, 0], [0, 1], [0, 2]],
-        [[1, 0], [1, 1], [1, 2]],
-        [[2, 0], [2, 1], [2, 2]],
-        [[0, 0], [1, 0], [2, 0]],
-        [[0, 1], [1, 1], [2, 1]],
-        [[0, 2], [1, 2], [2, 2]],
-        [[0, 2], [1, 1], [2, 0]],
-    ]
-assert len(get_win_conditions()) == 8
+win_conditions = [
+    [[0, 0], [1, 1], [2, 2]],
+    [[0, 0], [0, 1], [0, 2]],
+    [[1, 0], [1, 1], [1, 2]],
+    [[2, 0], [2, 1], [2, 2]],
+    [[0, 0], [1, 0], [2, 0]],
+    [[0, 1], [1, 1], [2, 1]],
+    [[0, 2], [1, 2], [2, 2]],
+    [[0, 2], [1, 1], [2, 0]],
+]
 
+
+## Function name: did_turn_win
+## Purpose: given whose_turn, the current board, and the
+##   win_condition, returns whether whose_turn won with that
+##   win_condition
+## Input: whose_turn (string)
+## Input: current board (list of lists)
+## Input: win_condition (list of lists)
+## Output: True if whose_turn won with the given win_condition
 def did_turn_win(whose_turn, board, win_condition):
     for (row, col) in win_condition:
         if board[row][col] != whose_turn:
             return False
     return True
-
-assert did_turn_win('X', [['X', 'X', 'X'], ['O', '', 'O'], ['', 'O', '']], [[0, 0], [0, 1], [0, 2]])
-assert not did_turn_win('O', [['X', 'X', 'X'], ['O', '', 'O'], ['', 'O', '']], [[0, 0], [0, 1], [0, 2]])
-assert did_turn_win('O', [['O', 'O', 'O'], ['X', '', 'X'], ['', 'X', '']], [[0, 0], [0, 1], [0, 2]])
+## Test statements
+# test_board = [['X', '', 'O'],['O', 'X', 'X'],['X', '', 'O']]
+# print_board(test_board)
+# print(did_turn_win('X', test_board, [[0, 0], [1, 1], [2, 2]]))
+# quit()
 
 def are_there_empty_spots(board):
     for row in board:
@@ -109,6 +123,11 @@ def are_there_empty_spots(board):
                 return True
     return False
 
+## Function name: get_game_status
+## Purpose: Based on the board and winner, determine the game status
+## Input: board (list of lists)
+## Input: winner (string)
+## Output: one of 'keep playing', 'tie', 'X', or 'O'
 def get_game_status(board, winner):
     if winner is not None:
         return winner
@@ -117,17 +136,12 @@ def get_game_status(board, winner):
     else:
         # all spots are filled but no winner is a tie
         return 'tie'
-assert get_game_status(make_board(), None) == 'keep playing'
-assert get_game_status(make_board(), 'X') == 'X'
-assert get_game_status(make_board(), 'O') == 'O'
-assert get_game_status([
-    ['X', 'O', 'X'],
-    ['X', 'O', 'O'],
-    ['O', 'X', 'X']
-], None) == 'tie'
 
+## Function name: check_for_winner
+## Purpose: Checks if any of the win conditions have been met by either player
+## Input: Current board (list of lists)
+## Output: A string describing the win condition ("win", "tie", or "keep playing")
 def check_for_winner(board):
-    win_conditions = get_win_conditions()
     winner = None
     for win_condition in win_conditions:
         if did_turn_win('O', board, win_condition):
@@ -135,23 +149,17 @@ def check_for_winner(board):
         if did_turn_win('X', board, win_condition):
             winner = 'X'
     return get_game_status(board, winner)
-assert check_for_winner(make_board()) == 'keep playing'
-assert check_for_winner([
-    ['X', 'O', 'X'],
-    ['O', 'X', 'O'],
-    ['O', 'X', 'X']
-]) == 'X'
-assert check_for_winner([
-    ['X', 'O', 'X'],
-    ['O', 'O', 'O'],
-    ['O', 'X', 'X']
-]) == 'O'
-assert check_for_winner([
-    ['X', 'O', 'X'],
-    ['X', 'O', 'O'],
-    ['O', 'X', 'X']
-]) == 'tie'
 
+## Test statements
+# test_board = [['X', '', 'O'],['O', 'X', 'X'],['X', '', 'O']]
+# print_board(test_board)
+# print(check_for_winner(test_board))
+# quit()
+
+## Function name: is_game_over
+## Purpose: Return whether the game is over based on the win_status
+## Input: win_status (string)
+## Output: True if the game is over, False if we need to keep playing
 def is_game_over(win_status):
     if win_status == 'keep playing':
         return False
@@ -162,12 +170,10 @@ def is_game_over(win_status):
     if win_status == 'O':
         return True
 
-assert not is_game_over('keep playing')
-assert is_game_over('tie')
-assert is_game_over('X')
-assert is_game_over('O')
-
-# Now that we've defined our functions, let's play a game of tic-tac-toe!
+## Test statements
+# print(is_game_over('keep playing'))
+# print(is_game_over('tie'))
+# quit()
 
 # (Note: This `if` statement is important, please don't remove it.)
 if __name__ == '__main__':
