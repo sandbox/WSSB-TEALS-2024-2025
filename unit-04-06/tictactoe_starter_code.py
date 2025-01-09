@@ -79,7 +79,7 @@ win_conditions = [
 ## Purpose:
 ## Input:
 ## Output:
-def did_turn_win(whose_turn, board, win_condition):
+def did_player_win_with_condition(player, board, win_condition):
     pass
 
 

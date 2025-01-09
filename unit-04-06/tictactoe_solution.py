@@ -97,23 +97,23 @@ win_conditions = [
 ]
 
 
-## Function name: did_turn_win
-## Purpose: given whose_turn, the current board, and the
-##   win_condition, returns whether whose_turn won with that
+## Function name: did_player_win_with_condition
+## Purpose: given player, the current board, and the
+##   win_condition, returns whether player won with that
 ##   win_condition
-## Input: whose_turn (string)
+## Input: player (string)
 ## Input: current board (list of lists)
 ## Input: win_condition (list of lists)
-## Output: True if whose_turn won with the given win_condition
-def did_turn_win(whose_turn, board, win_condition):
+## Output: True if player won with the given win_condition
+def did_player_win_with_condition(player, board, win_condition):
     for (row, col) in win_condition:
-        if board[row][col] != whose_turn:
+        if board[row][col] != player:
             return False
     return True
 ## Test statements
 # test_board = [['X', '', 'O'],['O', 'X', 'X'],['X', '', 'O']]
 # print_board(test_board)
-# print(did_turn_win('X', test_board, [[0, 0], [1, 1], [2, 2]]))
+# print(did_player_win_with_condition('X', test_board, [[0, 0], [1, 1], [2, 2]]))
 # quit()
 
 def are_there_empty_spots(board):
@@ -144,9 +144,9 @@ def get_game_status(board, winner):
 def check_for_winner(board):
     winner = None
     for win_condition in win_conditions:
-        if did_turn_win('O', board, win_condition):
+        if did_player_win_with_condition('O', board, win_condition):
             winner = 'O'
-        if did_turn_win('X', board, win_condition):
+        if did_player_win_with_condition('X', board, win_condition):
             winner = 'X'
     return get_game_status(board, winner)
 
