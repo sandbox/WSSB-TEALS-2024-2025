@@ -4,7 +4,6 @@
 ## Unit 1: Example video
 ##
 
-
 ##
 ## 1.1 Components
 ##
@@ -20,7 +19,6 @@
 
 # Console (bottom-center): The script output and errors
 
-
 ##
 ## 1.2 Intro Script / Create new account
 ## 
@@ -33,7 +31,6 @@ setTempo(120)
 
 # Music Section
 fitMedia(TECHNO_SYNTHPLUCK_001, 1, 1, 9)
-
 
 ##
 ## 1.3 fitMedia()
