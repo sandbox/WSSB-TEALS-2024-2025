@@ -11,17 +11,25 @@
 # Content Manager (left): Your scripts and sounds
 
 # DAW (top-center): The song timeline and "play" button
-## Digital Audio Workstation, is software that produces 
+## Digital Audio Workstation, is software that produces
 ## or edits audio on a computer, be it in a professional
 ## studio or in home laptop-based studios.
+
+# Jerry to explain the DAW and the breakdown of the components of the
+# DAW
 
 # Editor (mid-center): The code editor and "run" button
 
 # Console (bottom-center): The script output and errors
 
+# Let's make sure the students can navigate through heading 2, the
+# number row numbers 2 can cycle through all the headings
+
+# Make sure they can run the quick_tour.py
+
 ##
 ## 1.2 Intro Script / Create new account
-## 
+##
 
 # Intro Script: This code adds one sound to the DAW
 
@@ -31,6 +39,9 @@ setTempo(120)
 
 # Music Section
 fitMedia(TECHNO_SYNTHPLUCK_001, 1, 1, 9)
+
+# Make sure you are able to save this file, and share it. That is how
+# you'll turn it in.
 
 ##
 ## 1.3 fitMedia()
@@ -52,7 +63,7 @@ setTempo(120)
 # Music
 fitMedia(Y18_DRUM_SAMPLES_2, 1, 1, 5)
 
-## Practice
+## Individual Practice
 # Using sounds that you like:
 # Place sounds on two different tracks
 # Place sounds from measure 2 to 12
