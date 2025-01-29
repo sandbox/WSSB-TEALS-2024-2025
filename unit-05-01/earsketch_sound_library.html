@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sound Clips</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 20px;
+            }
+            .clip {
+                margin-bottom: 15px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            .clip h3 {
+                margin: 0 0 5px;
+                font-size: 18px;
+            }
+            .clip p {
+                margin: 5px 0;
+                font-size: 14px;
+            }
+            button {
+                padding: 5px 10px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            ul {
+                list-style: none;
+                margin-left: -10px;
+                margin-right: -10px;
+                margin-bottom: 15px;
+                padding: 0;
+            }
+            li {
+                display: inline-block;
+            }
+            li a {
+                font-size: 24px;
+                padding-left: 10px;
+                padding-right: 10px;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Sound Clips</h1>
+        <navigation id="navigation"></navigation>
+        <div id="soundClips"></div>
+
+        <script src="earsketch_sound_library_part_1.json"></script>
+        <script>
+            // Metadata for sound clips
+            const soundClips = data;
+
+            const baseUrl = "https://earsketch.gatech.edu/backend-static";
+            const soundClipsContainer = document.getElementById("soundClips");
+            const navigation = document.getElementById("navigation");
+
+            // Clip letter
+            var clipLetter = "";
+            var clipNavigation = "";
+            const clipNavigationDiv = document.createElement("ul");
+
+            // Render sound clips
+            soundClips.forEach((clip) => {
+                const clipDiv = document.createElement("div");
+                clipDiv.className = "clip";
+
+                const title = document.createElement("h3");
+                title.textContent = clip.name;
+
+                newClipLetter = clip.name[0];
+                if (newClipLetter != clipLetter) {
+                    clipLetter = newClipLetter;
+                    clipLetterDiv = document.createElement("h2");
+                    clipLetterDiv.id = `${newClipLetter}`;
+                    clipLetterDiv.textContent = clipLetter;
+                    soundClipsContainer.appendChild(clipLetterDiv);
+
+                    clipLetterItem = document.createElement("li");
+                    clipLetterLink = document.createElement("a");
+                    clipLetterLink.href = `#${clipLetter}`;
+                    clipLetterLink.textContent = clipLetter;
+
+                    clipNavigationDiv.appendChild(clipLetterItem);
+                    clipLetterItem.appendChild(clipLetterLink);
+                }
+
+                const artist = document.createElement("p");
+                artist.textContent = `Artist: ${clip.artist}`;
+
+                const genre = document.createElement("p");
+                genre.textContent = `Genre: ${clip.genre}`;
+
+                const instrument = document.createElement("p");
+                instrument.textContent = `Instrument: ${clip.instrument}`;
+
+                const keySignature = document.createElement("p");
+                keySignature.textContent = `Key Signature: ${clip.keySignature}`;
+
+                const tempo = document.createElement("p");
+                tempo.textContent = `Tempo: ${clip.tempo}`;
+
+                const year = document.createElement("p");
+                year.textContent = `Year: ${clip.year}`;
+
+                const playButton = document.createElement("audio");
+                playButton.controls = true;
+                playButton.preload = "none";
+
+                const playButtonSource = document.createElement("source");
+                playButtonSource.src = `${baseUrl}/${clip.path}`;
+
+                clipDiv.appendChild(title);
+                playButton.appendChild(playButtonSource);
+                clipDiv.appendChild(playButton);
+                clipDiv.appendChild(artist);
+                clipDiv.appendChild(genre);
+                clipDiv.appendChild(instrument);
+                clipDiv.appendChild(keySignature);
+                clipDiv.appendChild(tempo);
+                clipDiv.appendChild(year);
+                soundClipsContainer.appendChild(clipDiv);
+                navigation.appendChild(clipNavigationDiv);
+            });
+        </script>
+    </body>
+</html>
