@@ -1,4 +1,5 @@
 # Dictionary methods
+# Try typing the following into a python console
 
 my_dictionary = {
 'kittens': 'cute animals',
