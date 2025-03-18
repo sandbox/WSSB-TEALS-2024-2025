@@ -70,18 +70,13 @@ def find_max_value_key(my_dictionary):
 
 # Name: find_top_word
 # Purpose: Prints the word that occurs most in a paragraph
-# Inputs: Paragrah (string), optional: dictionary of words and occurrences (dictionary)
-# Outputs: The dictionary minus the top occurring word
-def find_top_word(paragraph, dictionary_counts = {}):
+# Inputs: Paragraph (string)
+# Outputs: the top word
+def find_top_word(paragraph):
     word_list = text_to_word_list(paragraph)
-    # only create a new dictionary if the current dictionary is empty
-    if dictionary_counts == {}:
-        dictionary_counts = count_frequencies(word_list)
+    dictionary_counts = count_frequencies(word_list)
     top_word = find_max_value_key(dictionary_counts)
-    print(top_word)
-    # remove top word from dictionary
-    dictionary_counts.pop(top_word)
-    return dictionary_counts
+    return top_word
 
 # find_top_word(example_paragraph)
 
@@ -89,10 +84,16 @@ def find_top_word(paragraph, dictionary_counts = {}):
 # Purpose: Prints the top five words that occur most in a paragraph
 # by calling "find_top_word" five times
 # Inputs: Paragrah (string)
-# Outputs: None
+# Outputs: List of the top words
 def find_top_five_words(paragraph):
-    dictionary_counts = {}
+    word_list = text_to_word_list(paragraph)
+    dictionary_counts = count_frequencies(word_list)
+    top_words = []
     for i in range(0, 5):
-        dictionary_counts = find_top_word(paragraph, dictionary_counts)
+        top_word = find_max_value_key(dictionary_counts)
+        top_words.append(top_word)
+        dictionary_counts.pop(top_word)
+    return top_words
 
-find_top_five_words(example_paragraph)
+print(find_top_word(example_paragraph))
+print(find_top_five_words(example_paragraph))
