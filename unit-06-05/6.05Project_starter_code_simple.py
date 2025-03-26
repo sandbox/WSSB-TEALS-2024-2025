@@ -1,37 +1,37 @@
 # Dictionary of characters and character traits
 characters = {
     "taylor": {
-        "pronouns": "she/her",
+        "gender": "female",
         "age": "35",
         "height": "5'10",
         "job": "music"
     },
     "demi": {
-        "pronouns": "they/them",
+        "gender": "non-binary",
         "age": "35",
         "height": "5'0",
         "job": "music"
     },
     "simone": {
-        "pronouns": "she/her",
+        "gender": "female",
         "age": "28",
         "height": "5'0",
         "job": "sports"
     },
     "lebron": {
-        "pronouns": "he/him",
+        "gender": "male",
         "age": "40",
         "height": "6'9",
         "job": "sports"
     },
     "pedro": {
-        "pronouns": "he/him",
+        "gender": "male",
         "age": "49",
         "height": "5'10",
         "job": "TV/Movies"
     },
     "zendaya": {
-        "pronouns": "she/her",
+        "gender": "female",
         "age": "28",
         "height": "5'10",
         "job": "TV/Movies"
@@ -41,7 +41,7 @@ characters = {
 # help text
 help_text = '''
 - list: list out all the character's names
-- pronouns/age/height/job: asks for a piece of information
+- gender/age/height/job: asks for a piece of information
 - guess name: guess a character
 - help: displays all commands
 - quit: exits the game
