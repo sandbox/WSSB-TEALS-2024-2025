@@ -1,7 +1,7 @@
 import random
 
 # Dictionary of characters and character traits
-characters = {
+CHARACTERS = {
     "taylor": {
         "gender": "female",
         "age": "35",
@@ -40,7 +40,7 @@ characters = {
     },
 }
 
-help_text = '''
+HELP_TEXT = '''
 - list: list out all the character's names
 - gender/age/height/job: asks for a piece of information
 - guess name: guess a character
@@ -49,43 +49,56 @@ help_text = '''
 '''
 
 # list of traits to choose from
-list_of_trait_labels = ["gender", "age", "height", "job"]
+LIST_OF_TRAIT_LABELS = ["gender", "age", "height", "job"]
 
 # choose a random character
-random_character = random.choice(list(characters))
+random_character = random.choice(list(CHARACTERS))
 # setup hints
 hints = 0
+
+def action_list():
+    print("\n")
+    for name in CHARACTERS:
+        traits = []
+        for trait in CHARACTERS[name]:
+            traits.append(CHARACTERS[name][trait])
+        print(name + ": " + str(traits) + "\n")
+
+def action_trait(trait):
+    global hints
+    global random_character
+    if hints < 2:
+        character_trait = CHARACTERS[random_character][action]
+        print(character_trait)
+        hints += 1
+    else:
+        print("You've used all your hints!")
+
+def action_guess():
+    global hints
+    global random_character
+    user_guess = input("What character would you like to guess? ")
+    if user_guess == random_character:
+        print("You guessed right!")
+    else:
+        print("You guessed wrong.")
+    print("The correct answer was " + random_character + ".")
+    print("Try a new character or type 'quit'")
+    random_character = random.choice(list(CHARACTERS))
+    hints = 0
 
 # gameplay loop
 playing = True
 while playing:
     action = input("What would you like to do? ")
     if action == "list":
-        print("\n")
-        for name in characters:
-            traits = []
-            for trait in characters[name]:
-                traits.append(characters[name][trait])
-            print(name + ": " + str(traits) + "\n")
-    elif action in list_of_trait_labels:
-        if hints < 2:
-            trait = characters[random_character][action]
-            print(trait)
-            hints += 1
-        else:
-            print("You've used all your hints!")
+        action_list()
+    elif action in LIST_OF_TRAIT_LABELS:
+        action_trait(action)
     elif action == "guess":
-        user_guess = input("What character would you like to guess? ")
-        if user_guess == random_character:
-            print("You guessed right!")
-        else:
-            print("You guessed wrong.")
-        print("The correct answer was " + random_character + ".")
-        print("Try a new character or type 'quit'")
-        random_character = random.choice(list(characters))
-        hints = 0
+        action_guess()
     elif action == "help":
-        print(help_text)
+        print(HELP_TEXT)
     elif action == "quit":
         playing = False
     else:
