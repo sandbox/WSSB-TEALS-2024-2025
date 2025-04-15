@@ -1,7 +1,7 @@
 import random
 
 # Dictionary of characters and character traits
-characters = {
+CHARACTERS = {
     "taylor": {
         "gender": "female",
         "age": "35",
@@ -40,8 +40,7 @@ characters = {
     },
 }
 
-# help text
-help_text = '''
+HELP_TEXT = '''
 - list: list out all the character's names
 - gender/age/height/job: asks for a piece of information
 - guess name: guess a character
@@ -50,18 +49,40 @@ help_text = '''
 '''
 
 # list of traits to choose from
-list_of_trait_labels = ["gender", "age", "height", "job"]
+LIST_OF_TRAIT_LABELS = ["gender", "age", "height", "job"]
 
 # choose a random character
-
+random_character = ''
 # setup hints
+hints = 0
+
+def action_list():
+    pass
+# test statement
+# action_list()
+
+def action_trait():
+    pass
+# test statement
+# action_trait("age")
+
+def action_guess():
+    pass
+# test statement
+# action_guess()
 
 # gameplay loop
 playing = True
 while playing:
     action = input("What would you like to do? ")
-    if action == "help":
-        print(help_text)
+    if action == "list":
+        action_list()
+    elif action in LIST_OF_TRAIT_LABELS:
+        action_trait(action)
+    elif action == "guess":
+        action_guess()
+    elif action == "help":
+        print(HELP_TEXT)
     elif action == "quit":
         playing = False
     else:
