@@ -68,7 +68,7 @@ def action_trait(trait):
     global hints
     global random_character
     if hints < 2:
-        character_trait = CHARACTERS[random_character][action]
+        character_trait = CHARACTERS[random_character][trait]
         print(character_trait)
         hints += 1
     else:
