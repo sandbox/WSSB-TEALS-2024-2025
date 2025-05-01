@@ -14,7 +14,7 @@ pet_3 = Pet('mouse', 'white', 'seeds', 'squeak', 'Mike')
 pets = [pet_1, pet_2, pet_3]
 
 def pet_name_and_food(list_of_pets):
-    for pet in pets:
+    for pet in list_of_pets:
         print(pet.name)
         print(pet.food)
 
