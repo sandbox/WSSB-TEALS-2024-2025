@@ -8,6 +8,9 @@
 # Project Overview
 ## A brief description (2-3 sentences) explaining what the project is and what it will do
 
+# Features
+## List of features the program will contain
+
 # Target Users
 ## Who will use this program and why
 
